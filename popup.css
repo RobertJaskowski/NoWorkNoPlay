@@ -7,6 +7,13 @@ body{
 .switchDiv{
     text-align: center;
 }
+.switchDivActiveTimer{
+  text-align: center;
+}
+
+.splitter{
+  height: 5px;
+}
 
 /* The switch - the box around the slider */
 .switch {

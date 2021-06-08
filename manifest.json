@@ -20,6 +20,8 @@
     },
     "permissions":[
         "tabs",
-        "storage"
+        "storage",
+        "http://localhost:1337/*"
+
     ]
 }

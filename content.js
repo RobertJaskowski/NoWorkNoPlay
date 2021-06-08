@@ -1,56 +1,9 @@
-//alert("tset")  "default_popup":"popup.html",
-// chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
-//     const re = new RegExp('bear','gi')
-//     const matches = document.documentElement.innerHTML.match(re)
-//     sendResponse({count:matches.length})
-// })
-
-const re = new RegExp('bear','gi')
-const matches = document.documentElement.innerHTML.match(re)
-
-// chrome.runtime.sendMessage({
-//     url:window.location.href,
-//     count:matches.length
-// })
-
 
 chrome.storage.local.get('active', function(data) {
     if(data.active==true){
         setupListeners()
     }
 });
-
-function setupListeners(){
-    this.addEventListener("mousemove", resetTimer, false);
-    this.addEventListener("mousedown", resetTimer, false);
-    this.addEventListener("keypress", resetTimer, false);
-    this.addEventListener("DOMMouseScroll", resetTimer, false);
-    this.addEventListener("mousewheel", resetTimer, false);
-    this.addEventListener("touchmove", resetTimer, false);
-    this.addEventListener("MSPointerMove", resetTimer, false);
-}
-
-function desetupListeners(){
-    this.removeEventListener("mousemove", resetTimer, false);
-    this.removeEventListener("mousedown", resetTimer, false);
-    this.removeEventListener("keypress", resetTimer, false);
-    this.removeEventListener("DOMMouseScroll", resetTimer, false);
-    this.removeEventListener("mousewheel", resetTimer, false);
-    this.removeEventListener("touchmove", resetTimer, false);
-    this.removeEventListener("MSPointerMove", resetTimer, false);
-}
-
-
-
-function resetTimer(){
-    chrome.runtime.sendMessage("resetTimer")
-}
-
-// function responseRec(){
-//     alert('responsed')
-// }
-
-
 
 chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
     if(request == "play")
@@ -72,6 +25,39 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
 
 
 
+function setupListeners(){
+    this.addEventListener("mousemove", ResetTimer, false);
+    this.addEventListener("mousedown", ResetTimer, false);
+    this.addEventListener("keypress", ResetTimer, false);
+    this.addEventListener("DOMMouseScroll", ResetTimer, false);
+    this.addEventListener("mousewheel", ResetTimer, false);
+    this.addEventListener("touchmove", ResetTimer, false);
+    this.addEventListener("MSPointerMove", ResetTimer, false);
+}
+
+function desetupListeners(){
+    this.removeEventListener("mousemove", ResetTimer, false);
+    this.removeEventListener("mousedown", ResetTimer, false);
+    this.removeEventListener("keypress", ResetTimer, false);
+    this.removeEventListener("DOMMouseScroll", ResetTimer, false);
+    this.removeEventListener("mousewheel", ResetTimer, false);
+    this.removeEventListener("touchmove", ResetTimer, false);
+    this.removeEventListener("MSPointerMove", ResetTimer, false);
+}
+
+
+
+function ResetTimer(){
+    chrome.runtime.sendMessage("resetTimer")
+}
+
+// function responseRec(){
+//     alert('responsed')
+// }
+
+
+
+
 
 const tes = document.getElementById("player-container")
 
@@ -84,12 +70,12 @@ function checkKey(e) {
     if (e.keyCode == '66') {
         // up arrow 38    b
         // document.getElementById("player-container").play()
-        document.getElementsByTagName('video')[0].play()
+        //document.getElementsByTagName('video')[0].play()
     }
     else if (e.keyCode == '78') {
         // down arrow 40   n
         // document.getElementById("player-container").pause()
-        document.getElementsByTagName('video')[0].pause()
+       // document.getElementsByTagName('video')[0].pause()
     }
     else if (e.keyCode == '37') {
        // left arrow

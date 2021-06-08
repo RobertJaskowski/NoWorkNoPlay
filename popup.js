@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded',function(){
 var checkbox = document.querySelector("input[name=checkbox]");
 
 
+
+
+
 chrome.storage.local.get('active', function(data) {
     if(data.active==true){
         checkbox.checked =true
@@ -21,6 +24,23 @@ checkbox.addEventListener( 'change', function() {
     }
 });
 
+///////////////////
+
+var checkboxActiveTimer = document.querySelector("input[name=checkboxActiveTimer]");
+chrome.storage.local.get('ActiveTimerActive', function(data) {
+    if(data.ActiveTimerActive ==true){
+        checkboxActiveTimer.checked =true
+    }
+});
+
+
+checkboxActiveTimer.addEventListener( 'change', function() {
+    if(this.checked) {
+        chrome.runtime.sendMessage("ActiveTimerActivated")
+    } else { 
+        chrome.runtime.sendMessage("ActiveTimerDectivated")
+    }
+});
 
 
 
