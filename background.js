@@ -116,6 +116,15 @@ function Stop() {
     chrome.browserAction.setBadgeBackgroundColor({
         color: '#C15612'
     });
+    chrome.storage.local.get('ActiveTimerActive', function(data) {
+        if(data.ActiveTimerActive ==true){
+            OnActiveTimerDectivation()
+        }else{
+        }
+    });
+
+
+
     DesetupListeners()
     StopTimer()
 }
