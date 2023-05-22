@@ -162,10 +162,10 @@ function OnActiveTimerDectivation() {
 
 
 function fetchData() {
-    fetch('http://localhost:1337/value/ActiveTimer').then(r => r.text()).then(result => {
-        if (result.includes("IsActive")) {
+    fetch('http://localhost:6090/value/ActiveTimer').then(r => r.text()).then(result => {
+        if (result.includes("IsActive") || result.includes("true")) {
             ResetTimer()
-        } else if (result.includes("IsNotActive")) {
+        } else if (result.includes("IsNotActive")|| result.includes("false")) {
             Pause()
             StopTimer()
         } else {
